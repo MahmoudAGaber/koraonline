@@ -113,36 +113,57 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
         elevation: 0.0,
+        leading: IconButton(
+          icon: Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: Icon(
+              Icons.calendar_today,
+              size: 22,
+            ),
+          ),onPressed: (){
+          Navigator.pushNamed(context, '/clanderbar');
+        },),
         actions: <Widget>[
           Padding(
-            padding: const EdgeInsets.only(right: 10),
+            padding: const EdgeInsets.only(right: 5,left: 20),
             child: Row(
               children: <Widget>[
-                IconButton(
-                    icon: Icon(
-                  Icons.calendar_today,
-                  size: 22,
-                ),onPressed: (){
-                      Navigator.pushNamed(context, '/clanderbar');
-                },),
-                SizedBox(
-                  width: 15,
+                Container(
+                  width: 260,height: 45,
+                  child: Card(
+                    color: Colors.grey[300],
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(15))),
+                    child: Row(children: <Widget>[
+                      SizedBox(width: 10,),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 10),
+                        child: Icon(Icons.search,color: Colors.grey[600],),
+                      ),
+                      SizedBox(width: 10,),
+                       Expanded(
+                           child: TextFormField(
+                            obscureText: false,
+                            textCapitalization: TextCapitalization.sentences,
+                             decoration: InputDecoration.collapsed(
+                               hintText: "بحث",hintStyle: TextStyle(fontSize: 17),
+                             ),
+                      ),
+
+                       ),
+                    ],),
+                  ),
                 ),
-                GestureDetector(
-                  onTap: (){
-                    searchIcon();
-                  },
-                    child: Icon(Icons.search)),
+                SizedBox(width: 5,),
+                Icon(Icons.notifications_none),
                 SizedBox(
-                  width: 10,
+                  width: 20,
                 ),
-                Icon(Icons.more_vert),
+                Icon(Icons.tune),
               ],
             ),
           )
         ],
         backgroundColor: Theme.of(context).primaryColor,
-        title: Text("EPLWORLD"),
         bottom: TabBar(
           isScrollable: true,
           controller: tabController,
@@ -423,10 +444,13 @@ class _matchesState extends State<matches> with SingleTickerProviderStateMixin {
   
   Widget _tabBarPage() {
 
-    return ListView.builder(
-      physics: ClampingScrollPhysics(),
-      itemBuilder: (widget, indx) => _fullTile(indx),
-      itemCount: leaguen.length-1
+    return GestureDetector(
+      onTap: () => FocusScope.of(context).unfocus(),
+      child: ListView.builder(
+        physics: ClampingScrollPhysics(),
+        itemBuilder: (widget, indx) => _fullTile(indx),
+        itemCount: leaguen.length-1
+      ),
     );
   }
 

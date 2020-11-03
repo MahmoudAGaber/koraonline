@@ -25,13 +25,13 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
-  flutter_sticky_header : "^0.4.5"
+  #flutter_sticky_header : "^0.4.5"
   hijri_picker: ^2.0.0
-  table_calendar: ^2.2.3
+  #table_calendar: ^2.2.3
   carousel_slider: ^2.2.1
   carousel_pro: ^0.0.13
   scroll_to_index: ^1.0.6
-  sticky_headers: "^0.1.8"
+  #sticky_headers: "^0.1.8"
   flutter_swiper: ^1.1.6
   splashscreen: ^1.2.0
   flutter_clean_calendar: ^1.0.2+1
